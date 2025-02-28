@@ -23,11 +23,18 @@ public class Main {
         newManage.addTask();
 
       } else if (UserInput.equals("2")) {
+
+        System.out.println(
+            "Please indicate the number of which task you would like to delete. For example Task 1's deletion would be indicated as  '1' ");
+
+        int tempInt = Integer.parseInt(userIn.nextLine());
+
+        newManage.deleteTask(tempInt);
         // Delete task
       } else if (UserInput.equals("3")) {
         // Show tasks
-
         newManage.showTaskList();
+
       } else if (UserInput.equals("q")) {
         // Exit application
 
