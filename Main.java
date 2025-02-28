@@ -12,8 +12,6 @@ public class Main {
 
     System.out.println("Hello User!");
 
-    int i = 0;
-
     do {
       System.out.println(
           " \n1)Create new Task \n2)Delete task \n3)Show Tasks \nTo exit the program please enter 'q'");
