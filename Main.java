@@ -20,10 +20,14 @@ public class Main {
       if (UserInput.equals("1")) {
         // Create new task
 
+        newManage.addTask();
+
       } else if (UserInput.equals("2")) {
         // Delete task
       } else if (UserInput.equals("3")) {
         // Show tasks
+
+        newManage.showTaskList();
       } else if (UserInput.equals("q")) {
         // Exit application
 
