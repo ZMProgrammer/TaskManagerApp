@@ -13,9 +13,6 @@ public class TaskManager {
     this.taskHolder = new ArrayList<Task>();
   }
 
-  // TODO: Ensure that user input all sorts are handled in the Completion status
-  // indicator
-
   public void addTask() {
 
     System.out.println(
@@ -28,6 +25,8 @@ public class TaskManager {
     Task newTask = new Task(name, Status);
     this.taskHolder.add(newTask);
 
+    System.out.println("Task has been added.");
+
   }
 
   /**
@@ -38,17 +37,55 @@ public class TaskManager {
    * 
    */
   public void deleteTask(int index) {
-    this.taskHolder.remove(index - 1);
+    boolean validInput = false;
+
+    if (taskHolder.isEmpty()) {
+      System.out.println("You have 0 Tasks! There are no tasks to delete.");
+      return;
+    }
+
+    while (!validInput) {
+      if (index < 1) {
+        System.out.println("Invalid task number: Task numbers must be 1 or greater.");
+        System.out.print("Please enter a valid task number: ");
+        try {
+          index = Integer.parseInt(UserInput.nextLine());
+        } catch (NumberFormatException e) {
+          System.out.println("Error: Please enter a numeric value.");
+        }
+      } else if (index > taskHolder.size()) {
+        System.out.println("Invalid task number: You only have " + taskHolder.size() + " tasks.");
+        System.out.print("Please enter a valid task number: ");
+
+        try {
+          index = Integer.parseInt(UserInput.nextLine());
+        } catch (NumberFormatException e) {
+          System.out.println("Error: Please enter a numeric value.");
+        }
+      } else {
+        validInput = true;
+      }
+    }
+
+    // Remove the task, adjusting for zero-based indexing
+    taskHolder.remove(index - 1);
+    System.out.println("Task " + index + " has been removed.");
   }
 
   public void showTaskList() {
-    int taskCounter = 1;
 
-    for (Task TASKS : this.taskHolder) {
+    if (taskHolder.size() == 0) {
+      System.out.println("You have 0 Tasks to show!");
+    }
 
-      System.out.println(taskCounter + TASKS.getTaskName() + TASKS.getTaskStatus());
-      taskCounter++;
+    else {
 
+      for (Task TASKS : this.taskHolder) {
+
+        System.out
+            .println(taskHolder.indexOf(TASKS) + 1 + ")" + " " + TASKS.getTaskName() + " " + TASKS.getTaskStatus());
+
+      }
     }
   }
 
