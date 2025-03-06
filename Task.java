@@ -1,46 +1,72 @@
+/**
+ * Represents a task with a name and a completion status.
+ */
 public class Task {
 
+  // The name of the task; can be null.
   private String taskName = null;
+
+  // The status of the task: true if completed, false if not.
   private boolean taskStatus = false;
 
   /**
-   * @apiNote constructor can allow for nullable empty task names
+   * Default constructor that creates a Task with a null name and false status.
    */
-
   public Task() {
     this.taskName = null;
     this.taskStatus = false;
   }
 
-  public Task(String TaskName, boolean TaskStatus) {
-    this.taskName = TaskName;
-    this.taskStatus = TaskStatus;
+  /**
+   * Constructs a Task with the specified name and status.
+   *
+   * @param taskName   the name of the task; may be null
+   * @param taskStatus the status of the task; true for completed, false for
+   *                   uncompleted
+   */
+  public Task(String taskName, boolean taskStatus) {
+    this.taskName = taskName;
+    this.taskStatus = taskStatus;
   }
 
   /**
-   * @apiNote Getters for task name and task status marked complete from true or
-   *          uncomplete from false
-   * 
+   * Returns the name of the task.
+   *
+   * @return the task name, which may be null
    */
   public String getTaskName() {
     return this.taskName;
   }
 
-  public boolean getTaskStatus() {
-    return this.taskStatus;
+  /**
+   * Sets the task name.
+   *
+   * @param taskName the new name of the task
+   */
+  public void setTaskName(String taskName) {
+    this.taskName = taskName;
   }
 
   /**
-   * @apiNote Setters for task name and task status marked complete from true or
-   *          uncomplete from false
-   * 
+   * Sets the task status.
+   *
+   * @param taskStatus the new status of the task; true for completed, false for
+   *                   uncompleted
    */
-  public void setTaskName(String TaskName) {
-    this.taskName = TaskName;
+  public void setTaskStatus(boolean taskStatus) {
+    this.taskStatus = taskStatus;
   }
 
-  public void setTaskStatus(boolean TaskStatus) {
-    this.taskStatus = TaskStatus;
+  /**
+   * Returns a string representation of the task's status.
+   *
+   * @return "Completed" if the task is finished, otherwise "Unfinished"
+   */
+  public String showTaskStatus() {
+    if (this.taskStatus) { // no need to compare to true explicitly
+      return "Completed";
+    } else {
+      return "Unfinished";
+    }
   }
-
 }
